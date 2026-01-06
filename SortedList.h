@@ -7,9 +7,9 @@ template <typename T>
 class SortedList {
 private:
     struct Node {
-        T data;
+        T value;
         Node* next;
-        Node(const T& data, Node* next = nullptr) : data(data), next(next) {}
+        Node(const T& val, Node* nxt = nullptr) : value(val), next(nxt) {}
     };
 
     Node* head;
@@ -25,15 +25,14 @@ private:
     }
 
     void copyNodes(const SortedList& other) {
-        head = nullptr;
         if (!other.head) return;
 
-        head = new Node(other.head->data);
+        head = new Node(other.head->value);
         Node* curr = head;
         Node* otherCurr = other.head->next;
 
         while (otherCurr) {
-            curr->next = new Node(otherCurr->data);
+            curr->next = new Node(otherCurr->value);
             curr = curr->next;
             otherCurr = otherCurr->next;
         }
@@ -42,8 +41,9 @@ private:
 public:
     class ConstIterator {
     private:
-        const Node* node;
-        explicit ConstIterator(const Node* node) : node(node) {}
+        Node* current;
+        const SortedList* list;
+        ConstIterator(const SortedList* lst, Node* curr) : list(lst), current(curr) {}
         friend class SortedList;
 
     public:
@@ -53,31 +53,35 @@ public:
         ~ConstIterator() = default;
 
         bool operator!=(const ConstIterator& it) const {
-            return node != it.node;
+            if (list != it.list)
+                throw std::runtime_error("Comparing iterators from different lists");
+            return current != it.current;
         }
 
         const T& operator*() const {
-            if (!node) throw std::out_of_range("Iterator out of range");
-            return node->data;
+            if (!current)
+                throw std::out_of_range("Iterator out of range");
+            return current->value;
         }
 
         ConstIterator& operator++() {
-            if (!node) throw std::out_of_range("Iterator out of range");
-            node = node->next;
+            if (!current)
+                throw std::out_of_range("Iterator out of range");
+            current = current->next;
             return *this;
         }
     };
 
     SortedList() : head(nullptr), size(0) {}
-
+    
     SortedList(const SortedList& other) : head(nullptr), size(other.size) {
         copyNodes(other);
     }
 
     SortedList& operator=(const SortedList& other) {
         if (this != &other) {
-            destroyList();
-            copyNodes(other);
+            SortedList temp(other);
+            std::swap(head, temp.head);
             size = other.size;
         }
         return *this;
@@ -89,12 +93,12 @@ public:
 
     void insert(const T& value) {
         Node* newNode = new Node(value);
-        if (!head || value > head->data) {
+        if (!head || value > head->value) {
             newNode->next = head;
             head = newNode;
         } else {
             Node* curr = head;
-            while (curr->next && curr->next->data > value) {
+            while (curr->next && curr->next->value > value) {
                 curr = curr->next;
             }
             newNode->next = curr->next;
@@ -104,9 +108,9 @@ public:
     }
 
     void remove(const ConstIterator& iter) {
-        if (!iter.node) return;
+        if (!iter.current) return;
 
-        if (iter.node == head) {
+        if (iter.current == head) {
             Node* temp = head;
             head = head->next;
             delete temp;
@@ -115,7 +119,7 @@ public:
         }
 
         Node* curr = head;
-        while (curr->next && curr->next != iter.node) {
+        while (curr->next && curr->next != iter.current) {
             curr = curr->next;
         }
 
@@ -132,24 +136,21 @@ public:
     }
 
     ConstIterator begin() const {
-        return ConstIterator(head);
+        return ConstIterator(this, head);
     }
 
     ConstIterator end() const {
-        return ConstIterator(nullptr);
+        return ConstIterator(this, nullptr);
     }
 
     template <class Predicate>
     SortedList filter(Predicate pred) const {
         SortedList result;
         for (ConstIterator it = begin(); it != end(); ++it) {
-            if (pred(*it)) {
-                result.insert(*it);
-            }
+            if (pred(*it)) result.insert(*it);
         }
         return result;
     }
-
 
     template <class Operation>
     SortedList apply(Operation op) const {
