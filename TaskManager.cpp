@@ -14,6 +14,28 @@ int TaskManager::find_person(const string &personName) {
     return -1;
 }
 
+void TaskManager::assignTask(const string& name, const Task& task) {
+    int personIndex = -1;
+    for (int i = 0; i < num_of_workers && i < MAX_PERSONS; i++) {
+        if (workers[i].getName() == name) {
+            personIndex = i;
+            break;
+        }
+    }
+
+    if (personIndex == -1) {
+        if (num_of_workers >= MAX_PERSONS) {
+            throw std::runtime_error("TaskManager is FULL");
+        }
+        Person newPerson(name);
+        workers[num_of_workers] = newPerson;
+        personIndex = num_of_workers;
+        num_of_workers++;
+    }
+
+    workers[personIndex].assignTask(task);
+}
+
 void TaskManager::completeTask(const string &personName) {
     int person_num = find_person(personName);
     if (person_num != -1)
