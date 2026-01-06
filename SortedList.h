@@ -8,6 +8,19 @@ namespace mtm {
     template <typename T>
     class SortedList {
     public:
+    private:
+        class Node {
+        private:
+            T data;
+            Node* next;
+        public:
+            Node()=default;
+            Node(const T& data) : data(data), next(nullptr) {}
+        };
+
+        Node* head;
+        int size;
+
         /**
          *
          * the class should support the following public interface:
