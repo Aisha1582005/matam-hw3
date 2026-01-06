@@ -39,12 +39,12 @@ private:
     }
 
 public:
-    class ConstIterator {
-    private:
-        Node* current;
-        const SortedList* list;
-        ConstIterator(const SortedList* lst, Node* curr) : list(lst), current(curr) {}
-        friend class SortedList;
+   class ConstIterator {
+private:
+    const SortedList* list;
+    Node* current;
+    ConstIterator(const SortedList* lst, Node* curr) : list(lst), current(curr) {}
+    friend class SortedList;
 
     public:
         ConstIterator() = default;
