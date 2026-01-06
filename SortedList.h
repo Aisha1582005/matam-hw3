@@ -25,18 +25,21 @@ private:
     }
 
     void copyNodes(const SortedList& other) {
-        if (!other.head) return;
-
-        head = new Node(other.head->value);
-        Node* curr = head;
-        Node* otherCurr = other.head->next;
-
-        while (otherCurr) {
-            curr->next = new Node(otherCurr->value);
-            curr = curr->next;
-            otherCurr = otherCurr->next;
-        }
+    if (!other.head) {
+        head = nullptr;
+        return;
     }
+
+    head = new Node(other.head->value);
+    Node* curr = head;
+    Node* otherCurr = other.head->next;
+
+    while (otherCurr) {
+        curr->next = new Node(otherCurr->value);
+        curr = curr->next;
+        otherCurr = otherCurr->next;
+    }
+}
 
 public:
    class ConstIterator {
@@ -107,29 +110,37 @@ private:
         size++;
     }
 
-    void remove(const ConstIterator& iter) {
-        if (!iter.current) return;
-
-        if (iter.current == head) {
-            Node* temp = head;
-            head = head->next;
-            delete temp;
-            size--;
-            return;
-        }
-
-        Node* curr = head;
-        while (curr->next && curr->next != iter.current) {
-            curr = curr->next;
-        }
-
-        if (curr->next) {
-            Node* temp = curr->next;
-            curr->next = temp->next;
-            delete temp;
-            size--;
-        }
+  void remove(const ConstIterator& iter) {
+    if (iter.list != this) {
+        throw std::runtime_error("Invalid iterator");
     }
+
+    if (!iter.current) {
+        throw std::runtime_error("Invalid iterator");
+    }
+
+    if (iter.current == head) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        size--;
+        return;
+    }
+
+    Node* curr = head;
+    while (curr && curr->next != iter.current) {
+        curr = curr->next;
+    }
+
+    if (!curr) {
+        throw std::runtime_error("Invalid iterator");
+    }
+
+    Node* temp = curr->next;
+    curr->next = temp->next;
+    delete temp;
+    size--;
+}
 
     int length() const {
         return size;
