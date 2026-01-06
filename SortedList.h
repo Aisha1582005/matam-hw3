@@ -69,6 +69,10 @@ namespace mtm {
 
     template <class T>
     class SortedList<T>::ConstIterator {
+    private:
+        const Node* node;
+        explicit ConstIterator(const Node* node) : node(node) {}
+        friend class SortedList;
         /**
          * the class should support the following public interface:
          * if needed, use =defualt / =delete
