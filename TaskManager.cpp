@@ -38,3 +38,19 @@ void TaskManager::bumpPriorityByType(TaskType type, int priority) {
         workers[i].setTasks(new_tasks);
     }
 }
+
+void TaskManager::printTasksByType(TaskType type) const {
+    SortedList<Task> to_print;
+    for (int i = 0; i < num_of_workers; i++) {
+        const SortedList<Task> &tasks = workers[i].getTasks();
+        for (SortedList<Task>::ConstIterator it = tasks.begin(); it != tasks.end(); ++it) {
+            Task curr_task = (*it);
+            if (curr_task.getType() == type) {
+                to_print.insert(curr_task);
+            }
+        }
+    }
+    for (SortedList<Task>::ConstIterator it = to_print.begin(); it != to_print.end(); ++it) {
+        std::cout << (*it) << std::endl;
+    }
+}
