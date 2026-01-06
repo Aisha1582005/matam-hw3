@@ -84,6 +84,46 @@ namespace mtm {
                 return current != other.current;
             }
         };
+  void insert(const T& value) {
+            Node* newNode = new Node(value);
+            if (!head || value > head->data) { // Descending order
+                newNode->next = head;
+                head = newNode;
+            } else {
+                Node* curr = head;
+                while (curr->next && curr->next->data > value) {
+                    curr = curr->next;
+                }
+                newNode->next = curr->next;
+                curr->next = newNode;
+            }
+            size++;
+        }
+
+        void remove(const ConstIterator& iter) {
+            if (!iter.current) return;
+            if (iter.current == head) {
+                Node* temp = head;
+                head = head->next;
+                delete temp;
+                size--;
+                return;
+            }
+            Node* curr = head;
+            while (curr->next && curr->next != iter.current) {
+                curr = curr->next;
+            }
+            if (curr->next) {
+                Node* temp = curr->next;
+                curr->next = temp->next;
+                delete temp;
+                size--;
+            }
+        }
+
+        int length() const {
+            return size;
+        }
 
 
         template<typename Predicate>
@@ -96,6 +136,7 @@ namespace mtm {
             }
             return result;
         }
+
 
         template<typename Operation>
         SortedList<T> apply(Operation operation) const {
