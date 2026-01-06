@@ -93,6 +93,13 @@ namespace mtm {
             }
             return false;
         }
+
+        const T& operator*() const {
+            if (node == nullptr) {
+                throw std::out_of_range("out of range");
+            }
+            return node->data;
+        }
         /**
          * the class should support the following public interface:
          * if needed, use =defualt / =delete
