@@ -166,6 +166,7 @@ void unionize(const SortedList& other) {
         insert(*it);
     }
 }
+};
 }
         /**
          * the class should support the following public interface:
