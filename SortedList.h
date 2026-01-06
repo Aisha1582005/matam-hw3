@@ -41,6 +41,14 @@ namespace mtm {
             }
             return result;
         }
+
+        ConstIterator begin() const {
+            return ConstIterator(head);
+        }
+
+        ConstIterator end() const {
+            return ConstIterator(nullptr);
+        }
         /**
          *
          * the class should support the following public interface:
