@@ -73,6 +73,11 @@ namespace mtm {
         const Node* node;
         explicit ConstIterator(const Node* node) : node(node) {}
         friend class SortedList;
+
+    public:
+        ~ConstIterator() = default;
+        ConstIterator& operator=(const ConstIterator&) = default;
+        ConstIterator(const ConstIterator&) = default;
         /**
          * the class should support the following public interface:
          * if needed, use =defualt / =delete
