@@ -86,6 +86,13 @@ namespace mtm {
         ~ConstIterator() = default;
         ConstIterator& operator=(const ConstIterator&) = default;
         ConstIterator(const ConstIterator&) = default;
+
+        bool operator!=(const ConstIterator& it) const {
+            if (it != *this) {
+                return true;
+            }
+            return false;
+        }
         /**
          * the class should support the following public interface:
          * if needed, use =defualt / =delete
