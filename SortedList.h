@@ -178,5 +178,4 @@ public:
          * 7. operator!= - returns true if the iterator points to a different element
          *
          */
-    };
-}
+
