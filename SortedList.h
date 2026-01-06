@@ -1,48 +1,22 @@
 #pragma once
-
-#include <iostream>
 #include <stdexcept>
 
 namespace mtm {
 
-    template <typename T>
-    class SortedList {
-    public:
-    private:
-        class Node {
-        private:
-            T data;
-            Node* next;
-        public:
-            Node()=default;
-            Node(const T& data) : data(data), next(nullptr) {}
-        };
+template <typename T>
+class SortedList {
+private:
+    struct Node {
+        T data;
+        Node* next;
+        Node(const T& data, Node* next = nullptr) : data(data), next(next) {}
+    };
 
-        Node* head;
-        int size;
+    Node* head;
+    int size;
 
-     void copyNodes(const SortedList<T>& other) {
-            if (!other.head) return;
-            Node* last = nullptr;
-            Node* currOther = other.head;
-            while (currOther) {
-                Node* newNode = new Node(currOther->data);
-                if (!head) head = newNode;
-                else last->next = newNode;
-                last = newNode;
-                currOther = currOther->next;
-            }
-            size = other.size;
-        }
-
-        void destroyList() {
-            while (head) {
-                Node* tmp = head;
-                head = head->next;
-                delete tmp;
-            }
-            size = 0;
-        }
+    void destroyList();
+    void copyNodes(const SortedList& other);
 
     public:
    class ConstIterator;
