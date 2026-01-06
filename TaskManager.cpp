@@ -11,3 +11,9 @@ int TaskManager::find_person(const string &personName) {
     }
     return -1;
 }
+
+void TaskManager::completeTask(const string &personName) {
+    int person_num = find_person(personName);
+    if (person_num != -1)
+        workers[person_num].completeTask();
+}
