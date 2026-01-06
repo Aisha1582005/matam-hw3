@@ -3,6 +3,8 @@
 #include "Person.h"
 #include "SortedList.h"
 
+TaskManager::TaskManager() : num_of_workers(0) {}
+
 int TaskManager::find_person(const string &personName) {
     for (int i = 0; i < MAX_PERSONS; i++) {
         if (workers[i].getName() == personName) {
