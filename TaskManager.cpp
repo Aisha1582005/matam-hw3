@@ -15,25 +15,19 @@ int TaskManager::find_person(const string &personName) {
 }
 
 void TaskManager::assignTask(const string& name, const Task& task) {
-    int personIndex = -1;
-    for (int i = 0; i < num_of_workers && i < MAX_PERSONS; i++) {
-        if (workers[i].getName() == name) {
-            personIndex = i;
-            break;
-        }
-    }
-
+    int personIndex = find_person(name);
+    Task newTask = task;
+    newTask.setId(id++);
     if (personIndex == -1) {
         if (num_of_workers >= MAX_PERSONS) {
             throw std::runtime_error("TaskManager is FULL");
         }
-        Person newPerson(name);
-        workers[num_of_workers] = newPerson;
+        personIndex = num_of_workers;
+        workers[num_of_workers] = Person(name);
         personIndex = num_of_workers;
         num_of_workers++;
     }
-
-    workers[personIndex].assignTask(task);
+    workers[personIndex].assignTask(newTask);
 }
 
 void TaskManager::completeTask(const string &personName) {
@@ -46,8 +40,8 @@ void TaskManager::bumpPriorityByType(TaskType type, int priority) {
     if (priority < 0) {
         return;
     }
-    SortedList<Task> new_tasks;
     for (int i = 0; i < num_of_workers; i++) {
+        SortedList<Task> new_tasks;
         const SortedList<Task> &tasks = workers[i].getTasks();
         for (SortedList<Task>::ConstIterator it = tasks.begin(); it != tasks.end(); ++it) {
             Task curr_task = (*it);
@@ -89,13 +83,13 @@ void TaskManager::printTasksByType(TaskType type) const {
     for (int i = 0; i < num_of_workers; i++) {
         const SortedList<Task> &tasks = workers[i].getTasks();
         for (SortedList<Task>::ConstIterator it = tasks.begin(); it != tasks.end(); ++it) {
-            Task curr_task = (*it);
-            if (curr_task.getType() == type) {
-                to_print.insert(curr_task);
+
+            if ((*it).getType() == type) {
+                to_print.insert(*it);
             }
         }
     }
     for (SortedList<Task>::ConstIterator it = to_print.begin(); it != to_print.end(); ++it) {
-        std::cout << (*it) << std::endl;
+        std::cout << *it << std::endl;
     }
 }

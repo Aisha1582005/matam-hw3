@@ -15,6 +15,7 @@ private:
     static const int MAX_PERSONS = 10;
     Person workers[MAX_PERSONS];
     int num_of_workers;
+    int id = 0;
 
     int find_person(const string &personName);
 
