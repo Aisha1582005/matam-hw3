@@ -24,9 +24,10 @@ private:
         size = 0;
     }
 
-    void copyNodes(const SortedList& other) {
+  void copyNodes(const SortedList& other) {
     if (!other.head) {
         head = nullptr;
+        size = 0;
         return;
     }
 
@@ -34,13 +35,15 @@ private:
     Node* curr = head;
     Node* otherCurr = other.head->next;
 
+    size = 1;
+
     while (otherCurr) {
         curr->next = new Node(otherCurr->value);
         curr = curr->next;
         otherCurr = otherCurr->next;
+        size++;
     }
 }
-
 public:
    class ConstIterator {
 private:
@@ -77,9 +80,9 @@ private:
 
     SortedList() : head(nullptr), size(0) {}
     
-    SortedList(const SortedList& other) : head(nullptr), size(other.size) {
-        copyNodes(other);
-    }
+  SortedList(const SortedList& other) : head(nullptr), size(0) {
+    copyNodes(other);
+}
 
     SortedList& operator=(const SortedList& other) {
         if (this != &other) {
@@ -111,13 +114,10 @@ private:
     }
 
   void remove(const ConstIterator& iter) {
-    if (iter.list != this) {
-        throw std::runtime_error("Invalid iterator");
-    }
+    if (iter.list != this)
+        throw std::runtime_error("Iterator does not belong to this list");
 
-    if (!iter.current) {
-        throw std::runtime_error("Invalid iterator");
-    }
+    if (!iter.current) return;
 
     if (iter.current == head) {
         Node* temp = head;
@@ -128,18 +128,16 @@ private:
     }
 
     Node* curr = head;
-    while (curr && curr->next != iter.current) {
+    while (curr->next && curr->next != iter.current) {
         curr = curr->next;
     }
 
-    if (!curr) {
-        throw std::runtime_error("Invalid iterator");
+    if (curr->next) {
+        Node* temp = curr->next;
+        curr->next = temp->next;
+        delete temp;
+        size--;
     }
-
-    Node* temp = curr->next;
-    curr->next = temp->next;
-    delete temp;
-    size--;
 }
 
     int length() const {
