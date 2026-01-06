@@ -47,18 +47,17 @@ public:
         friend class SortedList;
 
     public:
-        ~ConstIterator() = default;
-        ConstIterator& operator=(const ConstIterator&) = default;
+        ConstIterator() = default;
         ConstIterator(const ConstIterator&) = default;
+        ConstIterator& operator=(const ConstIterator&) = default;
+        ~ConstIterator() = default;
 
         bool operator!=(const ConstIterator& it) const {
             return node != it.node;
         }
 
         const T& operator*() const {
-            if (node == nullptr) {
-                throw std::out_of_range("out of range");
-            }
+            if (!node) throw std::out_of_range("Iterator out of range");
             return node->data;
         }
 
@@ -70,7 +69,7 @@ public:
     };
 
     SortedList() : head(nullptr), size(0) {}
-    
+
     SortedList(const SortedList& other) : head(nullptr), size(other.size) {
         copyNodes(other);
     }
@@ -151,6 +150,7 @@ public:
         return result;
     }
 
+
     template <class Operation>
     SortedList apply(Operation op) const {
         SortedList result;
@@ -158,6 +158,12 @@ public:
             result.insert(op(*it));
         }
         return result;
+    }
+
+    void unionize(const SortedList& other) {
+        for (ConstIterator it = other.begin(); it != other.end(); ++it) {
+            insert(*it);
+        }
     }
 };
 
