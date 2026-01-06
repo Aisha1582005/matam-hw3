@@ -21,6 +21,17 @@ namespace mtm {
         Node* head;
         int size;
 
+    public:
+        template<typename Predicate>
+        SortedList<T> filter(Predicate p) {
+            SortedList<T> result(*this);
+            for (ConstIterator it = begin(); it != end(); it++){
+                if (p(*it)) {
+                    result.insert(*it);
+                }
+            }
+            return result;
+        }
         /**
          *
          * the class should support the following public interface:
