@@ -32,6 +32,15 @@ namespace mtm {
             }
             return result;
         }
+
+        template<typename Operation>
+        SortedList<T> apply(Operation operation) const {
+            SortedList<T> result;
+            for (ConstIterator it = begin(); it != end(); it++) {
+                result.insert(operation(it));
+            }
+            return result;
+        }
         /**
          *
          * the class should support the following public interface:
