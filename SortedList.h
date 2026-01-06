@@ -152,7 +152,6 @@ private:
         return result;
     }
 
-  template<typename T>
    template<class Operation>
    SortedList<T> SortedList<T>::apply(Operation op) const {
     SortedList<T> result;
