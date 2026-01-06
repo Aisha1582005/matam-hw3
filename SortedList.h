@@ -73,7 +73,7 @@ public:
     };
 
     SortedList() : head(nullptr), size(0) {}
-    
+
     SortedList(const SortedList& other) : head(nullptr), size(other.size) {
         copyNodes(other);
     }
