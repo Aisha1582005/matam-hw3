@@ -22,6 +22,17 @@ namespace mtm {
         int size;
 
     public:
+        SortedList() : head(nullptr), size(0) {}
+        SortedList(const SortedList<T>& other) : head(nullptr), size(0) { copyNodes(other); }
+        SortedList& operator=(const SortedList<T>& other) {
+            if (this != &other) {
+                destroyList();
+                copyNodes(other);
+            }
+            return *this;
+        }
+        ~SortedList() { destroyList(); }
+
         template<typename Predicate>
         SortedList<T> filter(Predicate p) {
             SortedList<T> result(*this);
