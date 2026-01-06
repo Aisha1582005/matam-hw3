@@ -2,6 +2,7 @@
 #pragma once
 
 #include "Task.h"
+#include "Person.h"
 
 /**
  * @brief Class managing tasks assigned to multiple persons.
@@ -14,6 +15,9 @@ private:
     static const int MAX_PERSONS = 10;
     Person workers[MAX_PERSONS];
     int num_of_workers;
+
+    int find_person(const string &personName);
+
 
     // Note - Additional private fields and methods can be added if needed.
 
