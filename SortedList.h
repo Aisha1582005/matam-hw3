@@ -45,6 +45,7 @@ namespace mtm {
         }
 
     public:
+   class ConstIterator;
         SortedList() : head(nullptr), size(0) {}
         SortedList(const SortedList<T>& other) : head(nullptr), size(0) { copyNodes(other); }
         SortedList& operator=(const SortedList<T>& other) {
@@ -55,6 +56,35 @@ namespace mtm {
             return *this;
         }
         ~SortedList() { destroyList(); }
+ class ConstIterator {
+        private:
+            const SortedList* list;
+            Node* current;
+            ConstIterator(const SortedList* lst, Node* curr) : list(lst), current(curr) {}
+            friend class SortedList;
+          public:
+            ConstIterator() = default;
+            ConstIterator(const ConstIterator&) = default;
+            ConstIterator& operator=(const ConstIterator&) = default;
+            ~ConstIterator() = default;
+
+            ConstIterator& operator++() {
+                if (!current) throw std::out_of_range("Iterator out of range");
+                current = current->next;
+                return *this;
+            }
+
+            const T& operator*() const {
+                if (!current) throw std::out_of_range("Iterator out of range");
+                return current->data;
+            }
+
+            bool operator!=(const ConstIterator& other) const {
+                if (list != other.list) throw std::runtime_error("Comparing iterators from different lists");
+                return current != other.current;
+            }
+        };
+
 
         template<typename Predicate>
         SortedList<T> filter(Predicate p) {
