@@ -152,24 +152,20 @@ private:
         return result;
     }
 
- template<class Operation>
-SortedList<T> SortedList<T>::apply(Operation op) const {
-    SortedList<T> result;
+ template <class Operation>
+SortedList apply(Operation op) const {
+    SortedList result;
     for (ConstIterator it = begin(); it != end(); ++it) {
-        T new_value = op(*it);
-        result.insert(new_value);
+        result.insert(op(*it));
     }
     return result;
-}lt;
 }
 
-    void unionize(const SortedList& other) {
-        for (ConstIterator it = other.begin(); it != other.end(); ++it) {
-            insert(*it);
-        }
+void unionize(const SortedList& other) {
+    for (ConstIterator it = other.begin(); it != other.end(); ++it) {
+        insert(*it);
     }
-};
-
+}
 }
         /**
          * the class should support the following public interface:
