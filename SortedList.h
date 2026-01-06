@@ -152,14 +152,15 @@ private:
         return result;
     }
 
-   template<class Operation>
-   SortedList<T> SortedList<T>::apply(Operation op) const {
+ template<class Operation>
+SortedList<T> SortedList<T>::apply(Operation op) const {
     SortedList<T> result;
     for (ConstIterator it = begin(); it != end(); ++it) {
-        T new_value = op(*it); // must return fully initialized object
+        T new_value = op(*it);
         result.insert(new_value);
     }
     return result;
+}lt;
 }
 
     void unionize(const SortedList& other) {
