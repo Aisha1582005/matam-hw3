@@ -21,6 +21,29 @@ namespace mtm {
         Node* head;
         int size;
 
+     void copyNodes(const SortedList<T>& other) {
+            if (!other.head) return;
+            Node* last = nullptr;
+            Node* currOther = other.head;
+            while (currOther) {
+                Node* newNode = new Node(currOther->data);
+                if (!head) head = newNode;
+                else last->next = newNode;
+                last = newNode;
+                currOther = currOther->next;
+            }
+            size = other.size;
+        }
+
+        void destroyList() {
+            while (head) {
+                Node* tmp = head;
+                head = head->next;
+                delete tmp;
+            }
+            size = 0;
+        }
+
     public:
         SortedList() : head(nullptr), size(0) {}
         SortedList(const SortedList<T>& other) : head(nullptr), size(0) { copyNodes(other); }
