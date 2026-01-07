@@ -22,10 +22,9 @@ void TaskManager::assignTask(const string& name, const Task& task) {
         if (num_of_workers >= MAX_PERSONS) {
             throw std::runtime_error("TaskManager is FULL");
         }
-        personIndex = num_of_workers;
-        workers[num_of_workers] = Person(name);
-        personIndex = num_of_workers;
-        num_of_workers++;
+       workers[num_of_workers] = Person(name);
+       personIndex = num_of_workers;
+       num_of_workers++;
     }
     workers[personIndex].assignTask(newTask);
 }
