@@ -160,12 +160,6 @@ public:
         }
         return result;
     }
-
-    void unionize(const SortedList& other) {
-        for (ConstIterator it = other.begin(); it != other.end(); ++it) {
-            insert(*it);
-        }
-    }
 };
 
 }
