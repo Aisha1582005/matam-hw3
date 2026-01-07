@@ -38,10 +38,9 @@ void TaskManager::completeTask(const string &personName) {
 
 
 void TaskManager::bumpPriorityByType(TaskType type, int priority) {
-    if (priority < 0) {
-        return;
+    if (priority <= 0) {
+        throw std::invalid_argument("priority must be positive");
     }
-
     for (int i = 0; i < num_of_workers; i++) {
         const SortedList<Task> &tasks = workers[i].getTasks();
         SortedList<Task> new_tasks = tasks.apply(
