@@ -3,7 +3,8 @@
 #include "Person.h"
 #include "SortedList.h"
 
-TaskManager::TaskManager() : num_of_workers(0) {}
+TaskManager::TaskManager() : num_of_workers(0) {
+}
 
 int TaskManager::find_person(const string &personName) {
     for (int i = 0; i < MAX_PERSONS; i++) {
@@ -14,7 +15,7 @@ int TaskManager::find_person(const string &personName) {
     return -1;
 }
 
-void TaskManager::assignTask(const string& name, const Task& task) {
+void TaskManager::assignTask(const string &name, const Task &task) {
     int personIndex = find_person(name);
     Task newTask = task;
     newTask.setId(id++);
@@ -36,60 +37,64 @@ void TaskManager::completeTask(const string &personName) {
         workers[person_num].completeTask();
 }
 
+
 void TaskManager::bumpPriorityByType(TaskType type, int priority) {
     if (priority < 0) {
         return;
     }
-    for (int i = 0; i < num_of_workers; i++) {
-        SortedList<Task> new_tasks;
-        const SortedList<Task> &tasks = workers[i].getTasks();
-        for (SortedList<Task>::ConstIterator it = tasks.begin(); it != tasks.end(); ++it) {
-            Task curr_task = (*it);
-            if (curr_task.getType() == type) {
-                Task new_task(curr_task.getPriority() + priority, curr_task.getType(), curr_task.getDescription());
-                new_task.setId(curr_task.getId());
-                new_tasks.insert(new_task);
-            } else {
-                new_tasks.insert(curr_task);
-            }
-        }
-        workers[i].setTasks(new_tasks);
-    }
-}
 
-void TaskManager::printAllEmployees() const {
-    for (int i = 0; i < num_of_workers; i++) {
-        std::cout << workers[i] << std::endl;
-    }
-}
-
-void TaskManager::printAllTasks() const {
-    SortedList<Task> allTasks;
-
-    for (int i = 0; i < num_of_workers; i++) {
-        const SortedList<Task>& personTasks = workers[i].getTasks();
-        for (const Task& task : personTasks) {
-            allTasks.insert(task);
-        }
-    }
-
-    for (const Task& task : allTasks) {
-        std::cout << task << std::endl;
-    }
-}
-
-void TaskManager::printTasksByType(TaskType type) const {
-    SortedList<Task> to_print;
     for (int i = 0; i < num_of_workers; i++) {
         const SortedList<Task> &tasks = workers[i].getTasks();
-        for (SortedList<Task>::ConstIterator it = tasks.begin(); it != tasks.end(); ++it) {
-
-            if ((*it).getType() == type) {
-                to_print.insert(*it);
+        SortedList<Task> new_tasks = tasks.apply(
+            [type, priority](const Task &task) {
+                if (task.getType() == type) {
+                    Task new_task(task.getPriority() + priority, task.getType(),
+                                  task.getDescription());
+                    new_task.setId(task.getId());
+                    return new_task;
+                }
+                    return task;
+                }
+                );
+                workers[i].setTasks(new_tasks);
             }
+    }
+
+    void TaskManager::printAllEmployees() const {
+        for (int i = 0; i < num_of_workers; i++) {
+            std::cout << workers[i] << std::endl;
         }
     }
-    for (SortedList<Task>::ConstIterator it = to_print.begin(); it != to_print.end(); ++it) {
-        std::cout << *it << std::endl;
+
+    void TaskManager::printAllTasks() const {
+        SortedList<Task> allTasks;
+
+        for (int i = 0; i < num_of_workers; i++) {
+            const SortedList<Task> &personTasks = workers[i].getTasks();
+            for (const Task &task: personTasks) {
+                allTasks.insert(task);
+            }
+        }
+
+        for (const Task &task: allTasks) {
+            std::cout << task << std::endl;
+        }
     }
-}
+
+    void TaskManager::printTasksByType(TaskType type) const {
+        SortedList<Task> to_print;
+        for (int i = 0; i < num_of_workers; i++) {
+            SortedList<Task> filtered = workers[i].getTasks().filter([type](const Task& task) {
+                return task.getType() == type;
+            }
+            );
+            for (SortedList<Task>::ConstIterator it = filtered.begin();
+                 it != filtered.end(); ++it) {
+                    to_print.insert(*it);
+            }
+        }
+        for (SortedList<Task>::ConstIterator it = to_print.begin();
+             it != to_print.end(); ++it) {
+            std::cout << *it << std::endl;
+        }
+    }
