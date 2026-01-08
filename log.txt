@@ -1,0 +1,421 @@
+* commit a2dbc1786686e257bccb3e3b0fb453ef95fe2cad
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Wed Jan 7 16:57:23 2026 +0200
+| 
+|     Add an exception
+| 
+|  TaskManager.cpp | 5 ++---
+|  1 file changed, 2 insertions(+), 3 deletions(-)
+|   
+*   commit 8da6fb821de489442fb0b0b20d5f75e672e0e636
+|\  Merge: 9390b36 fda19db
+| | Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| | Date:   Wed Jan 7 16:38:45 2026 +0200
+| | 
+| |     Merge branch 'main' of github.com:Aisha1582005/matam-hw3
+| | 
+| * commit fda19db21c3e677ec78882ba9f54db74d7e44324
+| | Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| | Date:   Wed Jan 7 13:26:19 2026 +0200
+| | 
+| |     Fix assign task
+| | 
+| |  TaskManager.cpp | 7 +++----
+| |  1 file changed, 3 insertions(+), 4 deletions(-)
+| | 
+| * commit 66dbd2edcf6dbf8500c8507e709438c6f1bbde71
+| | Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| | Date:   Wed Jan 7 13:25:44 2026 +0200
+| | 
+| |     delete unionize
+| | 
+| |  SortedList.h | 6 ------
+| |  1 file changed, 6 deletions(-)
+| | 
+* | commit 9390b3637267a219e703ce0fd2e3261a1929b265
+|/  Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+|   Date:   Wed Jan 7 16:38:37 2026 +0200
+|   
+|       Fix bug in bump + printTasksByType functions
+|   
+|    TaskManager.cpp | 85 ++++++++++++++++++++++++++++-------------------------
+|    1 file changed, 45 insertions(+), 40 deletions(-)
+|   
+*   commit c1fff9bdd91db729b8aff4362b0fd5f81bbd70b2
+|\  Merge: 5cda3fe 8a68483
+| | Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| | Date:   Tue Jan 6 21:24:37 2026 +0200
+| | 
+| |     solve conflict
+| | 
+| * commit 8a68483cfe959d1ae3c0b64e30c4d9cace4cdc82
+| | Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| | Date:   Tue Jan 6 20:59:17 2026 +0200
+| | 
+| |     Update SortedList.h
+| | 
+| |  SortedList.h | 36 +++++++++++++++++-------------------
+| |  1 file changed, 17 insertions(+), 19 deletions(-)
+| | 
+| * commit bd3edc42e4a80a050c54d1ec7935f283c6df9352
+| | Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| | Date:   Tue Jan 6 20:56:10 2026 +0200
+| | 
+| |     Update SortedList.h
+| | 
+| |  SortedList.h | 67 +++++++++++++++++++++++++++++++++-----------------------
+| |  1 file changed, 39 insertions(+), 28 deletions(-)
+| | 
+| * commit 7d0f97033fa99fd2c04ebe3fdf0c49f47ab6e0e4
+| | Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| | Date:   Tue Jan 6 20:52:08 2026 +0200
+| | 
+| |     Update SortedList.h
+| | 
+| |  SortedList.h | 1 +
+| |  1 file changed, 1 insertion(+)
+| | 
+| * commit b19460f49eff08918c24d019182202ff470fd4be
+| | Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| | Date:   Tue Jan 6 20:50:09 2026 +0200
+| | 
+| |     Update SortedList.h
+| | 
+| |  SortedList.h | 20 ++++++++------------
+| |  1 file changed, 8 insertions(+), 12 deletions(-)
+| | 
+| * commit 1a3351da2cc1a65c5bc8f1d7e224abfdac7dab86
+| | Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| | Date:   Tue Jan 6 20:47:57 2026 +0200
+| | 
+| |     Update SortedList.h
+| | 
+| |  SortedList.h | 7 ++++---
+| |  1 file changed, 4 insertions(+), 3 deletions(-)
+| | 
+| * commit f151cff6ddc94b8ffd33f45dae61c28a2a8367c6
+| | Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| | Date:   Tue Jan 6 20:45:52 2026 +0200
+| | 
+| |     Update SortedList.h
+| | 
+| |  SortedList.h | 1 -
+| |  1 file changed, 1 deletion(-)
+| | 
+| * commit e855103029c4cf7f6218ccc857f3b08d8cc5fb91
+| | Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| | Date:   Tue Jan 6 20:44:56 2026 +0200
+| | 
+| |     Fix apply
+| | 
+| |  SortedList.h | 16 +++++++++-------
+| |  1 file changed, 9 insertions(+), 7 deletions(-)
+| | 
+| * commit 6005d1c9222fdf6da5356b91385424ca6f351c34
+| | Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| | Date:   Tue Jan 6 20:41:46 2026 +0200
+| | 
+| |     Fix declarations in class constiterator
+| | 
+| |  SortedList.h | 12 ++++++------
+| |  1 file changed, 6 insertions(+), 6 deletions(-)
+| | 
+* | commit 5cda3fe77e3cfd1456438df9333223970f680254
+|/  Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+|   Date:   Tue Jan 6 21:20:55 2026 +0200
+|   
+|       Fix bug - task id
+|   
+|    .gitmodules        |  6 ++++++
+|    MatamGenericTester |  1 +
+|    SortedList.h       |  2 +-
+|    TaskManager.cpp    | 28 +++++++++++-----------------
+|    TaskManager.h      |  1 +
+|    TechnionMatam      |  1 +
+|    6 files changed, 21 insertions(+), 18 deletions(-)
+| 
+* commit 26e4b5abb7a0ca1bc004cede34196dd16adc7338
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 20:39:34 2026 +0200
+| 
+|     Update SortedList.h
+| 
+|  SortedList.h | 53 +++++++++++++++++++++++++++--------------------------
+|  1 file changed, 27 insertions(+), 26 deletions(-)
+| 
+* commit 48f1bac29c4e1dfb92b9c0042186d453ea502d5b
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 20:35:14 2026 +0200
+| 
+|     Fix memory leaks
+| 
+|  SortedList.h | 18 ++++++++++++------
+|  1 file changed, 12 insertions(+), 6 deletions(-)
+| 
+* commit d5515637a071de59c853d5e2659777890de98e4f
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 20:28:09 2026 +0200
+| 
+|     Update SortedList.h
+| 
+|  SortedList.h | 3 +--
+|  1 file changed, 1 insertion(+), 2 deletions(-)
+| 
+* commit d07402f87644aac1a46866c697bec2cb502ce0f5
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 20:26:40 2026 +0200
+| 
+|     Update SortedList.h
+| 
+|  SortedList.h | 177 ++++++++++++++++++++++++++++++++++++++-------------------
+|  1 file changed, 120 insertions(+), 57 deletions(-)
+| 
+* commit e12c67818b3a891b545f7ac94f9251c8e15c76fe
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 20:23:47 2026 +0200
+| 
+|     Update SortedList.h
+| 
+|  SortedList.h | 138 +++++++++++++++++----------------------------------------
+|  1 file changed, 41 insertions(+), 97 deletions(-)
+| 
+* commit 35a54277fce93fdde0b7d2b1fc95db204d046769
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 20:22:28 2026 +0200
+| 
+|     Add node struct
+| 
+|  SortedList.h | 50 ++++++++++++--------------------------------------
+|  1 file changed, 12 insertions(+), 38 deletions(-)
+| 
+* commit d558792ce8648901cb1b4bbe1b6a4080f77e6723
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 20:12:15 2026 +0200
+| 
+|     fix bug
+| 
+|  SortedList.h | 24 ------------------------
+|  1 file changed, 24 deletions(-)
+| 
+* commit 19716c33e2b9ce9fa2a6c29bed22f2c9fa6514ad
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 13:45:30 2026 +0200
+| 
+|     add functions insert remove length
+| 
+|  SortedList.h | 41 +++++++++++++++++++++++++++++++++++++++++
+|  1 file changed, 41 insertions(+)
+| 
+* commit caa60b232cba1673ccb11f96b6163e114c85962c
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 13:44:05 2026 +0200
+| 
+|     add class iterator
+| 
+|  SortedList.h | 30 ++++++++++++++++++++++++++++++
+|  1 file changed, 30 insertions(+)
+| 
+* commit 2a5a65d4e995642caad608dd565c14d33770a483
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 13:41:03 2026 +0200
+| 
+|     add helper functions
+| 
+|  SortedList.h | 23 +++++++++++++++++++++++
+|  1 file changed, 23 insertions(+)
+| 
+* commit 3d6e0e78fa89d024f1371f22a4b87971bc1ced83
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 13:37:41 2026 +0200
+| 
+|     add constructor and destructor
+| 
+|  SortedList.h | 13 ++++++++++++-
+|  1 file changed, 12 insertions(+), 1 deletion(-)
+| 
+* commit 117bb42635320aa67fca838843c4f6b255ff5a65
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 11:16:23 2026 +0200
+| 
+|     Add printAllTasks
+| 
+|  TaskManager.cpp | 14 ++++++++++++++
+|  1 file changed, 14 insertions(+)
+| 
+* commit b5f0aa076b49cf53edcee114eb5dfcd3606163ae
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 11:15:33 2026 +0200
+| 
+|     Add printallemployes
+| 
+|  TaskManager.cpp | 7 +++++++
+|  1 file changed, 7 insertions(+)
+| 
+* commit 38a681c566df47500aeb9fec3e9a6475450daaf6
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 11:14:06 2026 +0200
+| 
+|     add assign task
+| 
+|  TaskManager.cpp | 22 ++++++++++++++++++++++
+|  1 file changed, 22 insertions(+)
+| 
+* commit b7f4d11211345e65530e193335f32800a1e4dffe
+| Author: Aisha1582005 <aishaa@campus.technion.ac.il>
+| Date:   Tue Jan 6 11:12:04 2026 +0200
+| 
+|     added constructor
+| 
+|  TaskManager.cpp | 4 +++-
+|  1 file changed, 3 insertions(+), 1 deletion(-)
+| 
+* commit 8b4d6ee54b6f7ea32f76761d968ad73fef5b1895
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:43:45 2026 +0200
+| 
+|     Add print function
+| 
+|  TaskManager.cpp | 16 ++++++++++++++++
+|  1 file changed, 16 insertions(+)
+| 
+* commit 38a4dab17f7bdd20b76d60d94fed26e0df61530c
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:43:13 2026 +0200
+| 
+|     Add bumpbypriorty function
+| 
+|  TaskManager.cpp | 21 +++++++++++++++++++++
+|  1 file changed, 21 insertions(+)
+| 
+* commit 2d37dfef8b069f9817d78e600e38934bb049e518
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:42:47 2026 +0200
+| 
+|     Add completetask function
+| 
+|  TaskManager.cpp | 6 ++++++
+|  1 file changed, 6 insertions(+)
+| 
+* commit 0318172be3866fad5219919b0d155fd986c84d77
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:41:52 2026 +0200
+| 
+|     Add helper function
+| 
+|  TaskManager.cpp | 13 +++++++++++++
+|  TaskManager.h   |  4 ++++
+|  2 files changed, 17 insertions(+)
+| 
+* commit 30ff0ccaf74df554e3d444d38576817595a106e8
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:39:31 2026 +0200
+| 
+|     Add fields
+| 
+|  TaskManager.h | 2 ++
+|  1 file changed, 2 insertions(+)
+| 
+* commit 91460147303acdbb9782984e60a10ad78b86f931
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:38:25 2026 +0200
+| 
+|     Add operator *()
+| 
+|  SortedList.h | 7 +++++++
+|  1 file changed, 7 insertions(+)
+| 
+* commit 5e5eb668ce4660f7ba991ae4b7d10cd5ccaf9025
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:38:06 2026 +0200
+| 
+|     Add operator !=
+| 
+|  SortedList.h | 7 +++++++
+|  1 file changed, 7 insertions(+)
+| 
+* commit 5aeb4a2b1e08be6e321946d8a559e6d62318b2e8
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:37:29 2026 +0200
+| 
+|     Add begin + end functions
+| 
+|  SortedList.h | 8 ++++++++
+|  1 file changed, 8 insertions(+)
+| 
+* commit 708b814b44a56427ccd760960ed1dc742559d619
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:37:00 2026 +0200
+| 
+|     Add ConstIterator dafault functions
+| 
+|  SortedList.h | 5 +++++
+|  1 file changed, 5 insertions(+)
+| 
+* commit b57c95c289aa332a391e5ad93ab9271dbc294f36
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:36:07 2026 +0200
+| 
+|     Add ConstIterator private part
+| 
+|  SortedList.h | 4 ++++
+|  1 file changed, 4 insertions(+)
+| 
+* commit 705ff2867e8c0253d10543535249f66c2a7e28ac
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:33:01 2026 +0200
+| 
+|     Add apply function
+| 
+|  SortedList.h | 9 +++++++++
+|  1 file changed, 9 insertions(+)
+| 
+* commit 52067178c26e8026d54ae2cc4efc03e6d5ac76e0
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:32:34 2026 +0200
+| 
+|     Add filter function
+| 
+|  SortedList.h | 11 +++++++++++
+|  1 file changed, 11 insertions(+)
+| 
+* commit c4ab2a1043dd090bd7c4a662d0da011cb42f0d29
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:31:17 2026 +0200
+| 
+|     Add SortedList fields
+| 
+|  SortedList.h | 13 +++++++++++++
+|  1 file changed, 13 insertions(+)
+| 
+* commit b7b1079b09916cb4cd9f611ec1d5b3ce10048ca1
+| Author: celineanabusi <cileneanabusi@campus.technion.ac.il>
+| Date:   Tue Jan 6 10:29:20 2026 +0200
+| 
+|     first commit
+| 
+|  SortedList.h    | 35 +++++++++++++++++------------------
+|  TaskManager.cpp |  0
+|  TaskManager.h   |  2 +-
+|  3 files changed, 18 insertions(+), 19 deletions(-)
+| 
+* commit a4298bd961e7001092cd76513e2a9020c3e07bda
+  Author: aisha1582005 <aishaa@campus.technion.ac.il>
+  Date:   Sat Dec 27 15:49:21 2025 +0200
+  
+      Add HW3 files
+  
+   Person.cpp           |  51 +++++
+   Person.h             |  79 ++++++++
+   README.md            |   6 +
+   SortedList.h         |  57 ++++++
+   Task.cpp             |  86 ++++++++
+   Task.h               | 115 +++++++++++
+   TaskManager.h        |  75 +++++++
+   main.cpp             | 531 +++++++++++++++++++++++++++++++++++++++++++++++++
+   tests/test1.expected |   3 +
+   tests/test2.expected |   3 +
+   tests/test3.expected |  30 +++
+   tests/test4.expected |   3 +
+   tests/test5.expected |   3 +
+   tests/test6.expected |  15 ++
+   14 files changed, 1057 insertions(+)
